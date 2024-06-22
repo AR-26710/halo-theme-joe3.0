@@ -54,20 +54,38 @@
         <div class="joe_leaving tpl">
           <th:block th:if="${theme.config.basic.comment_option == 'default'} or ${#strings.trim(theme.config.basic.waline.waline_serverURL) ==''}">
 
-          <ul class="joe_leaving-list">
-            <li th:each="result : ${commentFinder.list(null,1,20)}" class="item">
-              <div class="user">
-                <img class="avatar lazyload" th:src="${theme.config.blogger.lazyload_avatar}" alt="用户头像"
-                     th:data-src="${result.owner.avatar ?: (theme.config.blogger.default_avatar ?: '/themes/theme-Joe3/assets/img/transparent-placeholder.png')}" th:data-text-avatar="${result.spec.owner.displayName}" onload="Joe.loadedPlaceholderReplaceImg(this, 'AvatarImg')" onerror="Joe.errorImg(this, 'ErrAvatarImg')" />
-                <div class="nickname" th:text="${result.spec.owner.displayName}"></div>
-                <div class="date" th:text="${#dates.format(result.metadata.creationTimestamp, 'yyyy-MM-dd')}"></div>
-              </div>
-              <div class="wrapper">
-                <div class="content leaving-content" th:utext="${result.spec.content}"></div>
-              </div>
-            </li>
+            <ul class="joe_leaving-list">
+              <li th:each="result : ${commentFinder.list(null,1,20)}"
+                  th:with="massage_name = ${theme.config.basic.massage}"
+                  class="item">
 
-          </ul>
+                <th:block th:if="${theme.config.basic.massage != ''}">
+                  <th:block th:if="${result.spec.subjectRef.name == massage_name}">
+                    <div class="user">
+                      <img class="avatar lazyload" th:src="${result.owner.avatar}" alt="用户头像"
+                           th:data-src="${result.owner.avatar}" />
+                      <div class="nickname" th:text="${result.spec.owner.displayName}"></div>
+                      <div class="date" th:text="${#dates.format(result.metadata.creationTimestamp, 'yyyy-MM-dd')}"></div>
+                    </div>
+                    <div class="wrapper">
+                      <div class="content leaving-content" th:utext="${result.spec.content}"></div>
+                    </div>
+                  </th:block>
+                </th:block>
+
+                <th:block th:if="${theme.config.basic.massage == ''}">
+                  <div class="user">
+                    <img class="avatar lazyload" th:src="${result.owner.avatar}" alt="用户头像"
+                         th:data-src="${result.owner.avatar}" />
+                    <div class="nickname" th:text="${result.spec.owner.displayName}"></div>
+                    <div class="date" th:text="${#dates.format(result.metadata.creationTimestamp, 'yyyy-MM-dd')}"></div>
+                  </div>
+                  <div class="wrapper">
+                    <div class="content leaving-content" th:utext="${result.spec.content}"></div>
+                  </div>
+                </th:block>
+              </li>
+            </ul>
           </th:block>
           <th:block th:if="${theme.config.basic.comment_option == 'waline'} and ${#strings.trim(theme.config.basic.waline.waline_serverURL) !=''}">
             <ul class="joe_leaving-list" id="waline-leaving">
