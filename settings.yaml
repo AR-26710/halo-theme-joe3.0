@@ -7,6 +7,11 @@ spec:
     - group: basic
       label: 基本设置
       formSchema:
+        - $formkit: text
+          name: massage
+          label: 留言板展示来源
+          value: ""
+          help: "为空则展示所有评论，填写留言页面唯一标识则展示留言板页面评论"
         - $formkit: select
           name: theme_mode
           label: 主题模式
