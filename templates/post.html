@@ -36,6 +36,11 @@
               <a class="link" th:href="${theme.config.post.post_author_link == ''?'javascript:;':theme.config.post.post_author_link}" th:title="${contributor.displayName}">[[${contributor.displayName}]]</a>
             </div>
             <div class="item">
+              <th:block th:with="copyrightType = ${#annotations.get(post, 'copyrightType')},
+                  displayValue = ${copyrightType == 'original' ? '原创' : (copyrightType == 'reprint' ? '转载' : '')}">
+                <span class="text" th:text="${displayValue}"></span>
+              </th:block>
+              <span class="line">/</span>
               <span class="text">[[${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}]]</span>
               <span class="line">/</span>
               <th:block th:if="${theme.config.basic.comment_option == 'default'} or ${#strings.trim(theme.config.basic.waline.waline_serverURL) ==''}">
