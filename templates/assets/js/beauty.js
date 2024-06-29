@@ -38,11 +38,11 @@
                 _this._timer.printText = setTimeout(() => {
                     if (_outTextContent.length < _textContent.length) {
                         _outTextContent += _textContent[i++];
-                        _this.dom.bannerTitle.html("" + _outTextContent + "_");
+                        _this.dom.bannerTitle.html("" + _outTextContent);
                         _showPrintText()
                     } else {
                         clearTimeout(_this._timer.printText);
-                        _this.dom.bannerTitle.html(_outTextContent + '<span id="EvanBigBannerLastTitleTip">_</span>');
+                        _this.dom.bannerTitle.html(_outTextContent);
                         _lastPrintText()
                     }
                 }, _this.options.titlePrintInterval)
