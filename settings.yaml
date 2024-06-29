@@ -12,6 +12,11 @@ spec:
           label: 留言板展示来源
           value: ""
           help: "为空则展示所有评论，填写留言页面唯一标识则展示留言板页面评论"
+        - $formkit: text
+          name: commentAvatar
+          label: 评论头像
+          value: "https://gravatar.loli.net/avatar/"
+          help: "最新回复头像地址，如 https://avatars.githubusercontent.com/u/123456789?v=4 头像大小建议 128x128"
         - $formkit: select
           name: theme_mode
           label: 主题模式
