@@ -1,7 +1,7 @@
 apiVersion: theme.halo.run/v1alpha1
 kind: Theme
 metadata:
-  name: theme-Joe3-youzi
+  name: theme-Joe3
 spec:
   displayName: Theme Joe3-柚子个人修改版
   author:
