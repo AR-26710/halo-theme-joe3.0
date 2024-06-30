@@ -3955,7 +3955,6 @@ body:after {
 .joe_detail__article ol,
 .joe_detail__article ul {
   margin-bottom: 18px;
-  padding-left: 36px;
 }
 .joe_detail__article ol li,
 .joe_detail__article ul li {
@@ -4545,9 +4544,6 @@ body:after {
   min-height: 40px;
   border-radius: 50%;
   object-fit: cover;
-}
-.joe_detail .link-requirement {
-  padding-left: 30px;
 }
 .joe_detail .joe_comment_box {
   padding-top: 20px;
