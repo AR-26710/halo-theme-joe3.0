@@ -892,9 +892,6 @@
   html .joe_detail__count::after {
     display: none;
   }
-  html .joe_detail__overdue {
-    padding-top: 0;
-  }
   html .joe_detail__overdue-wrapper {
     padding: 10px;
   }
