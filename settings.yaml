@@ -158,6 +158,11 @@ spec:
           label: 浅色模式生效时间范围
           value: "5:00~19:00"
           help: "设置浅色模式自动生效的时间范围，范围之外为暗黑模式（仅在主题模式为 “自动模式” 下生效），请严格按照规定格式设置，否则会导致报错"
+        - $formkit: text
+          name: times
+          label: 版权时间
+          value: "2024"
+          help: "默认2024"
         - $formkit: group
           name: icp_police
           label: 备案信息

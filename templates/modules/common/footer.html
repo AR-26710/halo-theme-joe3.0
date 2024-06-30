@@ -5,10 +5,11 @@
           th:classappend="|${theme.config.footer.footer_position == 'fixed'? 'fixed' :''} ${theme.config.footer.enable_full_footer ? 'full' :''} |">
 
     <div class="joe_container"
-         th:classappend="${theme.config.footer.enable_rss == false} and ${theme.config.footer.enable_sitemap ==false} ?'central':''">
+         th:classappend="${theme.config.footer.enable_rss == false} and ${theme.config.footer.enable_sitemap ==false} ?'central':''"
+         th:with="times = ${theme.config.basic.times}">
       <div class="item">
         <p>
-          [[${#dates.format(new java.util.Date().getTime(), 'yyyy')}]] ©<a th:href="${site.url}" target="_blank" rel="noopener noreferrer">[[${site.title}]]</a>
+          [[${times}]] - [[${#dates.format(new java.util.Date().getTime(), 'yyyy')}]] ©<a th:href="${site.url}" target="_blank" rel="noopener noreferrer">[[${site.title}]]</a>
           <th:block th:if="${theme.config.footer.enable_icp} and ${#strings.trim(theme.config.basic.icp_police.icp) != ''} and ${theme.config.basic.icp_police.icp != null}">
            -
           <a class="icp" href="https://beian.miit.gov.cn" th:href="${theme.config.basic.icp_police.icp_link}" target="_blank" rel="noopener noreferrer nofollow">[[${theme.config.basic.icp_police.icp}]]</a>
