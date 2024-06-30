@@ -53,7 +53,6 @@
                   <joe-dplayer th:if="${momentItem.type.name == 'VIDEO'}" th:src="${momentItem.url}"></joe-dplayer>
                 </th:block>
               </div>
-              <span class="joe_journal_operate_item journal_content_expander"><i class="joe-font joe-icon-arrow-down"></i></span>
             </div>
             <th:block th:if="${theme.config.journals.enable_like_journal} or ${theme.config.journals.enable_comment_journal}">
             <div class="joe_journal_footer">
