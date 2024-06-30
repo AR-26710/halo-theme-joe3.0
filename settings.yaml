@@ -1964,7 +1964,11 @@ spec:
               label: 是
             - value: false
               label: 否
-
+        - $formkit: text
+          name: days
+          label: 温馨提示天数
+          value: "7"
+          help: "自定义温馨提示天数，超过此天数才显示温馨提示"
 
         - $formkit: textarea
 #          if: "$get(enable_passage_tips).value"
