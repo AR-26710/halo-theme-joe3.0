@@ -345,6 +345,7 @@ body:after {
   min-width: 0;
   flex: 1;
   padding-bottom: 15px;
+  opacity: 0.8;
 }
 .joe_dropdown {
   position: relative;
@@ -1533,6 +1534,7 @@ body:after {
 .joe_aside {
   padding-bottom: 15px;
   margin-left: 15px;
+  opacity: 0.8;
 }
 .joe_aside.hide {
   display: none;
