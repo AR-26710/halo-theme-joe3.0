@@ -117,6 +117,11 @@ spec:
           label: 背景图（浅色模式）
           help: "设置浅色模式下的背景图（建议webp格式），为空则只显示默认背景色"
           value: ""
+        - $formkit: attachment
+          name: background_light_mode_mobilemobile
+          label: 背景图（浅色模式-移动端）
+          help: "设置浅色模式下的背景图（建议webp格式），为空则只显示默认背景色"
+          value: ""
         - $formkit: select
           name: enable_background_dark
           value: false
@@ -130,6 +135,11 @@ spec:
         - $formkit: attachment
           name: background_dark_mode
           label: 背景图（暗黑模式）
+          help: "设置暗黑模式下的背景图（建议webp格式），为空则只显示默认背景色"
+          value: ""
+        - $formkit: attachment
+          name: background_dark_mode_mobilemobile
+          label: 背景图（暗黑模式-移动端）
           help: "设置暗黑模式下的背景图（建议webp格式），为空则只显示默认背景色"
           value: ""
         - $formkit: number

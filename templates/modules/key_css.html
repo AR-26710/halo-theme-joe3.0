@@ -109,6 +109,11 @@
             background-size: cover;
             background-image: url("[[${theme.config.basic.background_light_mode}]]");
         }
+        @media (max-width: 768px) { /* 768px 是一个常见的移动设备屏幕宽度断点 */
+            html[data-mode="light"] body {
+                background-image: url("[[${theme.config.basic.background_light_mode_mobilemobile}]]");
+            }
+        }
         [/]
         [# th:if="${theme.config.basic.enable_background_light != true} or ${theme.config.basic.background_light_mode == ''} or ${theme.config.basic.background_light_mode == null}"]
         html[data-mode="light"] body {
@@ -122,6 +127,11 @@
             background-repeat: no-repeat;
             background-size: cover;
             background-image: url("[[${theme.config.basic.background_dark_mode}]]");
+        }
+        @media (max-width: 768px) { /* 768px 是一个常见的移动设备屏幕宽度断点 */
+            html[data-mode="dark"] body {
+                background-image: url("[[${theme.config.basic.background_dark_mode_mobilemobile}]]");
+            }
         }
         [/]
         [# th:if="${theme.config.basic.enable_background_dark != true} or ${theme.config.basic.background_dark_mode == ''} or ${theme.config.basic.background_dark_mode == null}"]
