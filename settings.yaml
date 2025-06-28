@@ -138,14 +138,14 @@ spec:
           label: 外部资源地址
           value: ''
           help: '如果你的资源地址是https://example.com/assets/js/min/index.min.js，那么这里填写https://example.com'
-        - $formkit: text
+        - $formkit: color
           name: mode_color_light
           id: mode_color_light
           key: mode_color_light
           label: 主题色（浅色）
           value: '#fb6c28'
           help: '浅色主题色色值，默认#fb6c28'
-        - $formkit: text
+        - $formkit: color
           name: mode_color_dark
           id: mode_color_dark
           key: mode_color_dark
@@ -611,19 +611,6 @@ spec:
               label: 固定的彩带
             - value: balloon
               label: 上升的气球
-        - $formkit: text
-          name: loading_bar_height
-          id: loading_bar_height
-          key: loading_bar_height
-          label: 加载条高度
-          value: '3px'
-          help: '设置全局加载条的高度，默认为 3px，填 0 相当于不显示'
-        - $formkit: text
-          name: loading_bar_color
-          id: loading_bar_color
-          key: loading_bar_color
-          label: 加载条颜色
-          value: ''
         - $formkit: checkbox
           name: enable_loading_bar
           id: enable_loading_bar
@@ -631,12 +618,28 @@ spec:
           label: 开启页面加载条
           help: '是否开启页面顶部的加载条'
         - $formkit: text
+          if: '$get(enable_loading_bar).value'
+          name: loading_bar_height
+          id: loading_bar_height
+          key: loading_bar_height
+          label: 加载条高度
+          value: '3px'
+          help: '设置全局加载条的高度，默认为 3px，填 0 相当于不显示'
+        - $formkit: color
+          if: '$get(enable_loading_bar).value'
+          name: loading_bar_color
+          id: loading_bar_color
+          key: loading_bar_color
+          label: 加载条颜色
+          value: '#fb6c28'
+        - $formkit: color
           name: scrollbar_color
           id: scrollbar_color
           key: scrollbar_color
           label: 滚动条颜色
-          value: '#c0c4cc'
+          value: '#fb6c28'
         - $formkit: text
+          if: '$get(enable_loading_bar).value'
           name: scrollbar_width
           id: scrollbar_width
           key: scrollbar_width
@@ -790,6 +793,7 @@ spec:
                   value: ''
                   validation: 'required'
         - $formkit: radio
+          if: '$get(enable_banner).value === true'
           name: banner_direction
           id: banner_direction
           key: banner_direction
@@ -801,11 +805,13 @@ spec:
             - value: vertical
               label: 垂直
         - $formkit: checkbox
+          if: '$get(enable_banner).value === true'
           name: enable_banner_loop
           id: enable_banner_loop
           key: enable_banner_loop
           label: 循环播放
         - $formkit: radio
+          if: '$get(enable_banner).value === true'
           name: banner_effect
           id: banner_effect
           key: banner_effect
@@ -827,27 +833,32 @@ spec:
             - value: 'creative'
               label: 创意性
         - $formkit: checkbox
+          if: '$get(enable_banner).value === true'
           name: enable_banner_handle
           id: enable_banner_handle
           key: enable_banner_handle
           label: 允许手动控制
           help: '如果关闭，将隐藏切换按钮且不能通过鼠标和键盘进行切换'
         - $formkit: checkbox
+          if: '$get(enable_banner).value === true'
           name: enable_banner_switch_button
           id: enable_banner_switch_button
           key: enable_banner_switch_button
           label: 展示左右切换按钮
         - $formkit: checkbox
+          if: '$get(enable_banner).value === true'
           name: enable_banner_pagination
           id: enable_banner_pagination
           key: enable_banner_pagination
           label: 展示分页器
         - $formkit: checkbox
+          if: '$get(enable_banner).value === true'
           name: enable_banner_autoplay
           id: enable_banner_autoplay
           key: enable_banner_autoplay
           label: 自动切换
         - $formkit: number
+          if: '$get(enable_banner_autoplay).value === true'
           name: banner_delay
           id: banner_delay
           key: banner_delay
@@ -855,6 +866,7 @@ spec:
           value: '3500'
           help: '设置轮播图切换的间隔时间，默认3500（仅在自动切换开启时生效，单位：毫秒）'
         - $formkit: number
+          if: '$get(enable_banner_autoplay).value === true'
           name: banner_speed
           id: banner_speed
           key: banner_speed
@@ -862,6 +874,7 @@ spec:
           value: 500
           help: '设置轮播图的切换速度，默认500（单位：毫秒）'
         - $formkit: attachment
+          if: '$get(enable_banner).value === true'
           name: banner_lazyload_img
           id: banner_lazyload_img
           key: banner_lazyload_img
@@ -1983,14 +1996,14 @@ spec:
           label: 启用文章浏览进度条
           help: '文章页底部是否展示浏览进度条'
 
-        - $formkit: textarea
+        - $formkit: color
           name: progress_bar_bgc
           id: progress_bar_bgc
           key: progress_bar_bgc
           if: '$get(enable_progress_bar).value === true'
           label: 进度条背景色
-          value: ''
-          help: '浏览进度条的背景色，接受任何合法的颜色值（为空将使用默认背景色）'
+          value: '#fb6c28'
+          help: '浏览进度条的背景色'
         - $formkit: checkbox
           name: enable_toc
           id: enable_toc
@@ -2097,6 +2110,7 @@ spec:
           key: enable_share_link
           label: 链接分享
         - $formkit: textarea
+          if: '$get(enable_share_link).value === true'
           name: share_link_template
           id: share_link_template
           key: share_link_template
@@ -2990,18 +3004,12 @@ spec:
           key: driven_by_custom_img
           if: "$get(driven_by).value === 'custom'"
           label: 图片地址
-        - $formkit: radio
+        - $formkit: checkbox
           if: '$get(enable_footer).value == true'
           name: enable_rss
           id: enable_rss
           key: enable_rss
           label: 展示 RSS
-          value: true
-          options:
-            - value: true
-              label: 是
-            - value: false
-              label: 否
         - $formkit: checkbox
           if: '$get(enable_footer).value == true'
           name: enable_sitemap
@@ -3114,6 +3122,7 @@ spec:
           key: check_baidu_collect
           label: 检查百度收录情况
         - $formkit: text
+          if: '$get(check_baidu_collect).value == true'
           name: baidu_token
           id: baidu_token
           key: baidu_token
